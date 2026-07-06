@@ -54,6 +54,14 @@ bash scripts/snapshot-current-mac.sh
 bash scripts/bootstrap.sh
 ```
 
+管理者権限が必要な処理で毎回パスワード入力したくない場合は、sudo セッション維持オプションを使えます（開始時に1回だけ認証）。
+
+```bash
+bash scripts/bootstrap.sh --with-sudo-session
+```
+
+> 注意: `brew` を root/sudo で直接実行する構成ではありません。`bootstrap.sh` 自体も sudo では実行しないでください。
+
 ### 4) 検証
 
 ```bash
@@ -63,3 +71,43 @@ bash scripts/verify.sh
 ### 5) 手動チェックリストを実施
 
 `manual-checklist.md` に沿って残り作業を進めてください。
+
+## 個別実行コマンド
+
+必要な処理だけを個別に実行できます。
+
+### Brewfile のインストールだけ実行
+
+```bash
+brew bundle --file ./Brewfile
+```
+
+### Brewfile の不足チェックだけ実行（インストールなし）
+
+```bash
+brew bundle check --file ./Brewfile
+```
+
+### `~/.zshrc` の適用だけ実行
+
+```bash
+bash scripts/install-zshrc.sh
+```
+
+### macOS 設定（defaults）だけ適用
+
+```bash
+bash scripts/macos.sh
+```
+
+### 検証だけ実行
+
+```bash
+bash scripts/verify.sh
+```
+
+### スナップショットだけ取得
+
+```bash
+bash scripts/snapshot-current-mac.sh
+```
