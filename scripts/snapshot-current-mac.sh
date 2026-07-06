@@ -33,5 +33,11 @@ defaults read com.apple.dock > "$OUT_DIR/defaults-dock.txt" 2>/dev/null || true
 
 ls /Applications > "$OUT_DIR/applications.txt"
 
+if [[ -f "$HOME/.zshrc" ]]; then
+  cp "$HOME/.zshrc" "$OUT_DIR/zshrc.current"
+else
+  echo "~/.zshrc not found, skipping zshrc snapshot."
+fi
+
 echo "Snapshot completed."
 echo "Review files under: $OUT_DIR"

@@ -1,14 +1,14 @@
 # manual-checklist
 
-Tasks that should stay manual for safety and reliability.
+安全性と確実性のため、手動で実施する項目です。
 
-- Sign in with Apple ID
-- Sign in to iCloud and enable required sync settings
-- Sign in to 1Password and enable SSH agent if used
-- Generate or import SSH keys
-- Configure GitHub authentication (`gh auth login`)
-- Open each installed app once to grant permissions
-- Configure browser profile sync
-- Configure Docker Desktop settings if needed
-- Import fonts, certificates, or VPN profiles
-- Validate backup and security settings (FileVault, firewall)
+- Apple ID にサインインする
+- iCloud にサインインし、必要な同期設定を有効にする
+- 1Password にサインインし、必要なら SSH Agent を有効化する
+- SSH 鍵を作成またはインポートする
+- GitHub 認証を設定する（`gh auth login`）
+- インストールした各アプリを一度起動し、必要な権限を許可する
+- ブラウザのプロファイル同期を設定する
+- 必要に応じて Docker Desktop の設定を行う
+- フォント、証明書、VPN プロファイルをインポートする
+- バックアップとセキュリティ設定（FileVault、ファイアウォール）を確認する

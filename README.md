@@ -7,6 +7,7 @@ Apple Silicon (Mシリーズ) Mac 向けの初期セットアップキットで�
 - Homebrew 経由の CLI ツールと GUI アプリ (`Brewfile`)
 - 開発向けの主要 macOS 設定 (`scripts/macos.sh`)
 - 移行用の現行 Mac スナップショット (`scripts/snapshot-current-mac.sh`)
+- `~/.zshrc` の管理・移行 (`dotfiles/.zshrc`, `scripts/install-zshrc.sh`)
 - セットアップ後の検証 (`scripts/verify.sh`)
 - 自動化しない手作業の整理 (`manual-checklist.md`)
 
@@ -20,8 +21,10 @@ Apple Silicon (Mシリーズ) Mac 向けの初期セットアップキットで�
 - `scripts/bootstrap.sh`: 新規 Mac セットアップのエントリーポイント
 - `scripts/macos.sh`: 管理対象の macOS 設定を適用
 - `scripts/snapshot-current-mac.sh`: 現在の Mac 状態を移行用データとして出力
+- `scripts/install-zshrc.sh`: 管理対象の `~/.zshrc` を適用
 - `scripts/verify.sh`: セットアップ後の状態を検証
 - `Brewfile`: パッケージ/アプリの宣言的リスト
+- `dotfiles/.zshrc`: 管理対象の zsh 設定ファイル
 - `manual-checklist.md`: 手動で実施する項目
 
 ## 使い方
@@ -40,6 +43,7 @@ bash scripts/snapshot-current-mac.sh
 
 - `snapshots/<timestamp>/Brewfile.current` を確認
 - 残したいものだけ `Brewfile` に反映
+- `snapshots/<timestamp>/zshrc.current` を `dotfiles/.zshrc` に反映
 - `scripts/macos.sh` の defaults 設定を調整
 
 ### 3) 新しい Mシリーズ Mac をセットアップ

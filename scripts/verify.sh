@@ -23,6 +23,17 @@ else
   echo "Run: brew bundle --file \"$ROOT_DIR/Brewfile\""
 fi
 
+echo "Checking managed ~/.zshrc..."
+if [[ -f "$ROOT_DIR/dotfiles/.zshrc" ]]; then
+  if [[ -f "$HOME/.zshrc" ]] && cmp -s "$ROOT_DIR/dotfiles/.zshrc" "$HOME/.zshrc"; then
+    echo "~/.zshrc matches managed dotfiles/.zshrc"
+  else
+    echo "~/.zshrc does not match managed dotfiles/.zshrc"
+  fi
+else
+  echo "No managed dotfiles/.zshrc found, skipped."
+fi
+
 echo "Checking managed macOS defaults..."
 echo "InitialKeyRepeat=$(defaults read -g InitialKeyRepeat 2>/dev/null || echo unset)"
 echo "KeyRepeat=$(defaults read -g KeyRepeat 2>/dev/null || echo unset)"

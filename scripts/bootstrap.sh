@@ -8,7 +8,7 @@ if [[ "$(uname -m)" != "arm64" ]]; then
   exit 1
 fi
 
-echo "[1/4] Checking Xcode Command Line Tools..."
+echo "[1/5] Checking Xcode Command Line Tools..."
 if ! xcode-select -p >/dev/null 2>&1; then
   echo "Xcode Command Line Tools are not installed."
   echo "Run: xcode-select --install"
@@ -16,17 +16,20 @@ if ! xcode-select -p >/dev/null 2>&1; then
   exit 1
 fi
 
-echo "[2/4] Installing Homebrew if needed..."
+echo "[2/5] Installing Homebrew if needed..."
 if [[ ! -x /opt/homebrew/bin/brew ]]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-echo "[3/4] Installing formulae/casks from Brewfile..."
+echo "[3/5] Installing formulae/casks from Brewfile..."
 brew bundle --file "$ROOT_DIR/Brewfile"
 
-echo "[4/4] Applying managed macOS defaults..."
+echo "[4/5] Installing managed ~/.zshrc if available..."
+bash "$ROOT_DIR/scripts/install-zshrc.sh"
+
+echo "[5/5] Applying managed macOS defaults..."
 bash "$ROOT_DIR/scripts/macos.sh"
 
 echo "Bootstrap finished."
